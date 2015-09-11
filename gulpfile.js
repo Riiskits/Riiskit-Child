@@ -19,7 +19,7 @@ var notify     = require('gulp-notify');
 var paths = {
     //source paths
     scss: 'src/scss/**/*.scss',
-    js: 'src/js/plugins.js, src/js/**/*.js',
+    js: 'src/js/**/*.js',
     //distribution paths
     cssDst: 'dist/css/',
     jsDst: 'dist/js/'
