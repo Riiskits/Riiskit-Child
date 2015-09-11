@@ -69,11 +69,11 @@ function riiskit_child_dist_scripts() {
 }
 
 /* Uncomment for production */
-//add_action('wp_enqueue_scripts', 'riiskit_child_dist_stylesheets');
-//add_action( 'wp_enqueue_scripts', 'riiskit_child_dist_scripts');
+//add_action( 'wp_enqueue_scripts', 'riiskit_child_dist_stylesheets', 20 );
+//add_action( 'wp_enqueue_scripts', 'riiskit_child_dist_scripts', 20 );
 /* Comment out for production */
-add_action( 'wp_enqueue_scripts', 'riiskit_child_dev_stylesheets' );
-add_action( 'wp_enqueue_scripts', 'riiskit_child_dev_scripts' );
+add_action( 'wp_enqueue_scripts', 'riiskit_child_dev_stylesheets', 20 );
+add_action( 'wp_enqueue_scripts', 'riiskit_child_dev_scripts', 20 );
 
 
 
