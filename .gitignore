@@ -1,0 +1,13 @@
+
+node_modules
+LICENCE.MD
+*.sketch
+*.log
+*.map
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db

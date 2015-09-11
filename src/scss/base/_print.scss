@@ -1,0 +1,17 @@
+
+@media print {
+	/* Hide */
+    .site-header, .site-footer, .searchform, .skip-link,
+    input[type=submit], input[type=button], input[type=reset]
+    {
+        display: none !important;
+    }
+
+
+    /* Modify */
+    .primary {
+        float: none;
+        width: 95%;
+        margin: 0;
+    }
+}

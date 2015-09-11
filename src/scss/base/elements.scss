@@ -1,0 +1,51 @@
+
+@import "bourbon";
+@import "../utilities/index";
+
+
+
+
+
+html, body {
+	line-height: $base-line-height;
+	font-family: $base-font-primary;
+	font-size: $base-font-size;
+	color: color(base-font);
+
+	@if $enable-font-smoothing == true {
+      font-smooth: always;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+    }
+}
+
+
+p { margin: 0 0 24px 0; }
+
+
+a {
+	color: color(base-link);
+
+	&:visited {
+		color: #4122a6;
+	}
+	&:hover {
+		text-decoration: none;
+		color: #06e;
+	}
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 36px 0 12px;
+	font-family: $base-font-secondary;
+	color: color(base-heading);
+}
+
+h1 { font-size: 2.488em; }
+h2 { font-size: 2.074em; }
+h3 { font-size: 1.728em; }
+h4 { font-size: 1.44em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1em; }
