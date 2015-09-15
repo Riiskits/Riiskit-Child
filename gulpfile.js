@@ -98,28 +98,39 @@ gulp.task('jslint', function() {
 
 // Default
 gulp.task('watch', function() {
-    gulp.watch(paths.js, ['js', 'jslint']);
+    notifier.notify(readyNotifier);
+    //source paths
+    gulp.watch(paths.js, ['js']);
     gulp.watch(paths.scss, ['styles']);
     gulp.watch(paths.img, ['images']);
+    //distribution paths
+    gulp.watch(paths.jsDst, ['jslint']);
 });
-gulp.task('default', ['watch'], function(){
+gulp.task('default', ['js', 'styles', 'images'], function(){
     notifier.notify(readyNotifier);
+    //distribution paths
+    gulp.watch(paths.jsDst, ['jslint']);
 });
 
 // Autorefresh
-gulp.task('watch-autorefresh', function() {
-    gulp.watch(paths.js, ['js', 'jslint', 'browser-sync']);
-    gulp.watch(paths.scss, ['styles', 'browser-sync']);
-    gulp.watch(paths.img, ['images', 'browser-sync']);
-
-    gulp.watch("./").on('change', browserSync.reload);
-
-    notifier.notify(readyNotifier);
-});
-gulp.task('autorefresh', ['watch-autorefresh'], function(){
+gulp.task('autorefresh', function(){
+    //browsersync server
     gulp.task('browser-sync', function() {
         browserSync.init({
             proxy: '127.0.0.1'
         });
     });
+
+    //source paths
+    gulp.watch(paths.js, ['js', 'jslint', 'browser-sync']);
+    gulp.watch(paths.scss, ['styles', 'browser-sync']);
+    gulp.watch(paths.img, ['images', 'browser-sync']);
+    //distribution paths
+    gulp.watch(paths.jsDst, ['jslint']);
+
+    // browsersync injection
+    gulp.watch("./").on('change', browserSync.reload);
+
+    // gulp is ready
+    notifier.notify(readyNotifier);
 });
