@@ -50,7 +50,7 @@ jQuery(function ($) {
                     button.removeClass('active active was-not-active');
                 }
             }
-        });
+        }, 100);
 
         $.selector_cache(window)
             .on('resize.riiskit', menuResize);
