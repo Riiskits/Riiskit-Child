@@ -12,7 +12,6 @@ var changed     = require('gulp-changed');
 var browserSync = require('browser-sync').create();
 var plumber     = require('gulp-plumber');
 var eslint      = require('gulp-eslint');
-var stylish     = require('jshint-stylish');
 var imagemin    = require('gulp-imagemin');
 var pngquant    = require('imagemin-pngquant');
 var notify      = require('gulp-notify');
