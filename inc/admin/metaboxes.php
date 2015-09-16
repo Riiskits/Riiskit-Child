@@ -2,13 +2,13 @@
 /**
  * Remove unused metaboxes.
  *
- * @package		Riiskit
+ * @package		Riiskit Child
  * @subpackage	functions.php
- * @since		1.2.0
+ * @since		1.0.0
  */
 
 if ( is_admin() ) {
-	function riiskit_remove_meta_boxes() {
+	function riiskit_child_remove_meta_boxes() {
 		// Posts
 		remove_meta_box('trackbacksdiv', 'post', 'normal');
 		remove_meta_box('commentstatusdiv', 'post', 'normal');
@@ -18,5 +18,5 @@ if ( is_admin() ) {
 		remove_meta_box('commentstatusdiv', 'page', 'normal');
 		remove_meta_box('commentsdiv', 'page', 'normal');
 	}
-	add_action( 'admin_menu', 'riiskit_remove_meta_boxes' );
+	add_action( 'admin_menu', 'riiskit_child_remove_meta_boxes' );
 }

@@ -8,13 +8,19 @@
 
 /**
  * Set the content's pixel-width based on the theme's design.
+ *
+ * @since Riiskit Child 1.0.0
  */
 if ( ! isset( $content_width ) ) {
 	$content_width = apply_filters( 'riiskit_child_content_width' , 1170 );
 }
 
 
-
+/**
+ * Riiskit Child setup.
+ *
+ * @since Riiskit Child 1.0.0
+ */
 function riiskit_child_setup() {
 	//add_editor_style( array( 'inc/admin/css/editor-style.css' ) );
 
@@ -22,7 +28,6 @@ function riiskit_child_setup() {
 }
 
 add_action( 'after_setup_theme', 'riiskit_child_setup', 20 );
-
 
 
 /**
@@ -46,7 +51,6 @@ function riiskit_child_dev_scripts() {
     wp_enqueue_script( 'riiskit-child-main', get_stylesheet_directory_uri() . '/src/js/main.js', array( 'jquery' ), '1.0.0', true );
     wp_enqueue_script( 'riiskit-child-mobile-menu', get_stylesheet_directory_uri() . '/src/js/components/mobile-menu.js', array('jquery'), '1.0.0', true );
 }
-
 /**
  * Enqueue production stylesheets for the front end.
  *
@@ -58,7 +62,6 @@ function riiskit_child_dist_stylesheets() {
     // Child styles
     wp_enqueue_style( 'riiskit-child-main', get_stylesheet_directory_uri() . '/dist/css/min/main.min.css', array(), '1.0.0', null );
 }
-
 /**
  * Enqueue production scripts for the front end.
  *
@@ -76,9 +79,8 @@ add_action( 'wp_enqueue_scripts', 'riiskit_child_dev_stylesheets', 20 );
 add_action( 'wp_enqueue_scripts', 'riiskit_child_dev_scripts', 20 );
 
 
-
 /**
- * Inline JS and conditional JS (HTML5 shim, selectivizr).
+ * Inline JS.
  *
  * @since Riiskit 1.0.0
  */
@@ -89,33 +91,45 @@ function riiskit_child_scripts_head() { ?>
 add_action( 'wp_head', 'riiskit_child_scripts_head' );
 
 
+/*
+ * Theme constants.
+ *
+ * @since Riiskit Child 1.0.0
+ */
+if ( ! defined( 'RIISKIT_CHILD_BASE' ) ) {
+    define( 'RIISKIT_CHILD_BASE' , get_stylesheet_directory() . '/' );
+}
+if ( ! defined( 'RIISKIT_CHILD_BASE_URL' ) ) {
+    define( 'RIISKIT_CHILD_BASE_URL' , get_stylesheet_directory_uri() . '/' );
+}
+
 
 /**
  * Plugin filters.
  *
  * @since Riiskit Child 1.0.0
  */
-//require_once( RIISKIT_BASE . 'inc/plugin-filters.php' );
+//require_once( RIISKIT_CHILD_BASE . 'inc/plugin-filters.php' );
 
 /**
  * Custom post types.
  *
  * @since Riiskit Child 1.0.0
  */
-//require_once( RIISKIT_BASE . 'inc/admin/custom-post-types.php' );
+//require_once( RIISKIT_CHILD_BASE . 'inc/admin/custom-post-types.php' );
 
 /**
  * Custom logos etc.
  *
  * @since Riiskit Child 1.0.0
  */
-//require_once( RIISKIT_BASE . 'inc/admin/customization.php' );
+//require_once( RIISKIT_CHILD_BASE . 'inc/admin/customization.php' );
 
 /**
  * Metaboxes.
  *
  * @since Riiskit Child 1.0.0
  */
-//require_once( RIISKIT_BASE . 'inc/admin/metaboxes.php' );
+//require_once( RIISKIT_CHILD_BASE . 'inc/admin/metaboxes.php' );
 
 ?>

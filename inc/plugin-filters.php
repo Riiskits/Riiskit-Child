@@ -2,7 +2,7 @@
 /**
  * Useful filters for popular plugins.
  *
- * @package		Riiskit
+ * @package		Riiskit Child
  * @subpackage	functions.php
  * @since		1.0.0
  */
