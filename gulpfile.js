@@ -17,6 +17,8 @@ var pngquant    = require('imagemin-pngquant');
 var notify      = require('gulp-notify');
 var notifier    = require('node-notifier');
 
+var proxy = '127.0.0.1'; //if using browsersync
+
 var readyNotifier = {
     title: 'Gulp',
     message: 'Ready to rumble!',
@@ -39,11 +41,11 @@ var paths = {
 
 gulp.task('styles', function() {
     return gulp.src(paths.scss)
-        .pipe(sass({
-            includePaths: require('node-bourbon').includePaths
-        }))
         .pipe(plumber({
             errorHandler: notify.onError("Error: <%= error.message %>")
+        }))
+        .pipe(sass({
+            includePaths: require('node-bourbon').includePaths
         }))
         .pipe(gulp.dest(paths.cssDst))
         .pipe(cssmin())
@@ -96,33 +98,29 @@ gulp.task('jslint', function() {
 gulp.task('default', ['js', 'styles', 'images'], function(){
     notifier.notify(readyNotifier);
 });
+
 // Watch
 gulp.task('watch', function() {
     notifier.notify(readyNotifier);
     //source paths
     gulp.watch(paths.js, ['js']);
     gulp.watch(paths.scss, ['styles']);
-    gulp.watch(paths.img, ['images']);
     //distribution paths
     gulp.watch(paths.jsDst, ['jslint']);
 });
+
+// Compress images
+gulp.task('compress-img', ['images']);
+
 // Browsersync server
 gulp.task('browser-sync', function() {
     browserSync.init({
-        proxy: '127.0.0.1'
+        proxy: proxy
     });
 });
+
 // Autorefresh
-gulp.task('autorefresh', function() {
-    gulp.run('browser-sync');
-    //source paths
-    gulp.watch(paths.js, ['js', 'jslint']);
-    gulp.watch(paths.scss, ['styles']);
-    gulp.watch(paths.img, ['images']);
-    //distribution paths
-    gulp.watch(paths.jsDst, ['jslint']);
+gulp.task('autorefresh', ['browser-sync', 'watch'], function() {
     // browsersync injection
     gulp.watch("./").on('change', browserSync.reload);
-    // gulp is ready
-    notifier.notify(readyNotifier);
 });
