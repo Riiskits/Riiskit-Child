@@ -7,6 +7,49 @@
  * @since		1.0.0
  */
 
+// CPT without translation
+function register_riiskit_child_reference()
+{
+    $labels = array(
+        'name' => 'Referanser',
+        'singular_name' => 'Referanse',
+        'add_new' => 'Legg til',
+        'add_new_item' => 'Legg til referanse',
+        'edit_item' => 'Rediger referanse',
+        'new_item' => 'Ny referanse',
+        'view_item' => 'Vis referanse',
+        'search_items' => 'Søk etter referanser',
+        'not_found' => 'Ingen referanser funnet',
+        'not_found_in_trash' => 'Ingen referanser i søppelkurven',
+        'parent_item_colon' => 'Forelderreferanse',
+        'menu_name' => 'Referanser',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => false,
+        'description' => '',
+        'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', ),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-feedback',
+
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => true,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => true,
+        'capability_type' => 'post'
+    );
+
+    register_post_type( 'reference', $args );
+}
+add_action( 'init', 'register_riiskit_child_reference' );
+
 // CPT with translation
 function register_riiskit_child_employee()
 {
@@ -29,7 +72,7 @@ function register_riiskit_child_employee()
         'labels' => $labels,
         'hierarchical' => false,
         'description' => '',
-        'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
+        'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', ),
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
@@ -48,47 +91,3 @@ function register_riiskit_child_employee()
     register_post_type( 'employee', $args );
 }
 add_action( 'init', 'register_riiskit_child_employee' );
-
-// CPT without translation
-function register_riiskit_child_reference()
-{
-    $labels = array(
-        'name' => 'Referanser',
-        'singular_name' => 'Referanse',
-        'add_new' => _x( 'Add', 'reference', 'riiskit' ),
-        'add_new_item' => 'Legg til referanse',
-        'edit_item' => 'Rediger referanse',
-        'new_item' => 'Ny referanse',
-        'view_item' => 'Vis referanse',
-        'search_items' => 'Søk etter referanser',
-        'not_found' => 'Ingen referanser funnet',
-        'not_found_in_trash' => 'Ingen referanser i søppelkurven',
-        'parent_item_colon' => 'Forelderreferanse',
-        'menu_name' => 'Referanser',
-    );
-
-    $args = array(
-        'labels' => $labels,
-        'hierarchical' => false,
-        'description' => '',
-        'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
-        'taxonomies' => array( 'category' ),
-        'public' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'menu_position' => 5,
-		'menu_icon' => 'dashicons-feedback',
-
-        'show_in_nav_menus' => true,
-        'publicly_queryable' => true,
-        'exclude_from_search' => false,
-        'has_archive' => true,
-        'query_var' => true,
-        'can_export' => true,
-        'rewrite' => true,
-        'capability_type' => 'post'
-    );
-
-    register_post_type( 'reference', $args );
-}
-add_action( 'init', 'register_riiskit_child_reference' );
