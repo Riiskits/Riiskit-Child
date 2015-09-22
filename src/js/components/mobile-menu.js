@@ -1,7 +1,7 @@
 /**
  * Mobile togglemenu
  *
- * @since Riiskit 1.0.0
+ * @since Riiskit Child 1.0.0
  */
 
 jQuery(function ($) {
@@ -40,7 +40,6 @@ jQuery(function ($) {
 
        // Resize window
         var menuResize = riiskit.utils.throttle(function() {
-            console.log( 'test' );
             if ( $.selector_cache(window).width() >= menuBreakpoint ) {
                 menu.addClass('active was-not-active');
                 button.addClass('active');

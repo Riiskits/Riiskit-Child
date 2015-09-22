@@ -1,7 +1,7 @@
 /*
  * This is the main script used to init stuff etc.
  *
- * @since Riiskit 1.0.0
+ * @since Riiskit Child 1.0.0
  */
 
 jQuery(function ($) {
